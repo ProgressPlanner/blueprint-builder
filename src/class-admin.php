@@ -58,6 +58,6 @@ class Admin {
 		$blueprint_url  = site_url( 'wp-json/blueprint-builder/v1/json-' . get_option( 'blueprint_builder_key' ) );
 		$playground_url = 'https://playground.wordpress.net/?blueprint-url=' . $blueprint_url;
 
-		echo '<p>If you website is live, you can <a href="', $playground_url, '">open the Playground with this blueprint</a></p>';
+		echo '<p>If your website is live, you can <a href="', $playground_url, '">open the Playground with this blueprint</a></p>';
 	}
 }
