@@ -51,13 +51,16 @@ class Admin {
 	 */
 	public function render_page() {
 		$blueprint = $this->builder->generate();
+		echo '<div class="wrap">';
 		echo '<h1>Blueprint Builder</h1>';
 		echo '<p>Here you can create a blueprint of your current environment.</p>';
-		echo '<textarea rows="20" cols="100">', wp_json_encode( json_decode( $blueprint ), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ), '</textarea><br/>';
+		echo '<p><label for="blueprint-builder-json">Blueprint JSON</label></p>';
+		echo '<textarea id="blueprint-builder-json" rows="20" cols="100">', esc_textarea( wp_json_encode( json_decode( $blueprint ), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) ), '</textarea><br/>';
 
 		$blueprint_url  = site_url( 'wp-json/blueprint-builder/v1/json-' . get_option( 'blueprint_builder_key' ) );
 		$playground_url = 'https://playground.wordpress.net/?blueprint-url=' . $blueprint_url;
 
-		echo '<p>If you website is live, you can <a href="', $playground_url, '">open the Playground with this blueprint</a></p>';
+		echo '<p>If your website is live, you can <a href="', esc_url( $playground_url ), '">open the Playground with this blueprint</a>.</p>';
+		echo '</div>';
 	}
 }
